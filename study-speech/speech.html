@@ -1,0 +1,80 @@
+<html>
+    <body>
+        <textarea id="text" style="width:50vw; height: 30vh"></textarea>
+
+        <button id="talk" style="display: block; margin: 1rem 0; padding: 1rem; width: 10rem; font-size: 1.2rem;">Talk</button>
+        
+        <div id="message">click and hold Talk button to talk</div>
+    </body>
+    <script>
+        class Speech {
+
+            constructor() {
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                
+                this.recognition = new SpeechRecognition();
+                this.recognition.continuous = true;
+                this.recognition.interimResults = false;
+                this.recognition.maxAlternatives = 1;
+
+                this.recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+
+                    //console.log(event, transcript, confidence);
+                    this.onresult(transcript);
+                }.bind(this);
+
+                this.recognition.onerror = function(event) {
+                   console.log(event);
+                };
+            }
+
+            start() {
+                this.recognition.start();
+            }
+
+            stop() {
+                this.recognition.stop();
+            }
+
+            onresult(event)  {
+            }
+
+            static isSupport() {
+                return typeof(SpeechRecognition) !== 'undefined' || typeof(webkitSpeechRecognition) !== 'undefined';
+            }
+
+        }
+
+        
+        const msg = document.getElementById('message');
+
+        if(Speech.isSupport()) {
+            const talk = document.getElementById('talk');
+            const text = document.getElementById('text');
+
+            const speech = new Speech();
+            speech.onresult = (result) => {
+                text.value += result + '. ';
+            }
+        
+            talk.onmousedown = () => {
+                talk.style.backgroundColor='limegreen';
+                speech.start();
+            }
+
+            talk.onmouseup = () => {
+                talk.style.backgroundColor='yellow';
+                speech.stop();
+            }
+            talk.onmouseout = talk.onmouseup;
+
+
+        } else {
+            msg.innerText = 'Speech is not supported by browser';
+        }
+
+
+    </script>
+</html>
