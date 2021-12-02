@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -22,13 +25,16 @@ import { NoPermissionComponent } from './no-permission/no-permission.component';
     AddUserComponent,
     AddProductComponent,
     NoPermissionComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

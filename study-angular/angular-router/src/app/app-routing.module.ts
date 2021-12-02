@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AuthenticationGuard } from './auth/authentication.guard';
+import { FormGuard } from './auth/form.guard';
 import { PermissionGuard } from './auth/permission.guard';
 import { HomeComponent } from './home/home.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
     component: WelcomeComponent, 
     canActivate: [AuthenticationGuard],
     children: [
-      {path: 'add-user', component: AddUserComponent, canActivate:[PermissionGuard]},
+      {path: 'add-user', component: AddUserComponent, canActivate:[PermissionGuard], canDeactivate:[FormGuard]},
       {path: 'add-product', component: AddProductComponent, canActivate:[PermissionGuard]},
     ]
   },

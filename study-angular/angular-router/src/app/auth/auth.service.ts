@@ -13,6 +13,6 @@ export class AuthService {
   }
 
   hasPermission() {
-    return of(false);
+    return of(true);
   }
 }
