@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { map, Observable } from "rxjs";
-import { AddUserComponent } from "../add-user/add-user.component";
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { Observable } from "rxjs";
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
-import { AuthService } from "./auth.service";
 import { SafeData } from "./safe-data.interface";
 
 @Injectable({ providedIn: 'root' })

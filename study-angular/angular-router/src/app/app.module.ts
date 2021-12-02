@@ -8,10 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { HomeComponent } from './home/home.component';
-import { AddUserComponent } from './add-user/add-user.component';
-import { AddProductComponent } from './add-product/add-product.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
@@ -20,10 +17,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     HomeComponent,
-    AddUserComponent,
-    AddProductComponent,
     NoPermissionComponent,
     ConfirmDialogComponent,
   ],

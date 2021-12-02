@@ -1,30 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AddProductComponent } from './add-product/add-product.component';
-import { AddUserComponent } from './add-user/add-user.component';
-import { AuthenticationGuard } from './auth/authentication.guard';
-import { FormGuard } from './auth/form.guard';
-import { PermissionGuard } from './auth/permission.guard';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoadGuard } from './auth/load.guard';
 import { HomeComponent } from './home/home.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
-  { 
-    path: 'admin', 
-    component: WelcomeComponent, 
-    canActivate: [AuthenticationGuard],
-    children: [
-      {path: 'add-user', component: AddUserComponent, canActivate:[PermissionGuard], canDeactivate:[FormGuard]},
-      {path: 'add-product', component: AddProductComponent, canActivate:[PermissionGuard]},
-    ]
-  },
   { path: 'noPermission', component: NoPermissionComponent},
-  { path: '', component: HomeComponent}
+  { path: '', component: HomeComponent},
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canLoad: [LoadGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

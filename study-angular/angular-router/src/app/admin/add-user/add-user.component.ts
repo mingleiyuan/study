@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SafeData } from '../auth/safe-data.interface';
+import { SafeData } from '../../auth/safe-data.interface';
 
 @Component({
   selector: 'app-add-user',
