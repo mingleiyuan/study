@@ -1,0 +1,8 @@
+<p>user-list works!</p>
+
+<ng-container *ngFor="let user of users$ | async">
+    <div>
+        {{user.id}} {{user.name}} {{user.email}}
+        <a [routerLink]="['user', user.id]">Details</a>
+    </div>
+</ng-container>
