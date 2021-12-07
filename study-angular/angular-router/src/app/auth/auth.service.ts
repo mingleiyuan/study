@@ -6,8 +6,6 @@ import { delay, of } from 'rxjs';
 })
 export class AuthService {
 
-  constructor() { }
-
   isLoggedIn() {
     return of(true).pipe(delay(500));
   }

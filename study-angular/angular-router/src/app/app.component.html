@@ -1,8 +1,10 @@
 <mat-toolbar color="primary">
   <span>Angular Routing</span>
   <a mat-button routerLinkActive="active" routerLink="/">Home</a>
+  <a mat-button routerLinkActive="active" routerLink="/users">User</a>
   <a mat-button routerLinkActive="active" routerLink="/admin">Admin</a>
 </mat-toolbar>
+<mat-progress-bar *ngIf="isLoading$ | async" mode="buffer"></mat-progress-bar>
 <main class="content">
   <router-outlet></router-outlet>
 </main>
